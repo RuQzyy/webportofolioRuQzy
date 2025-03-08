@@ -254,20 +254,60 @@
             object-fit: cover; /* Memastikan gambar tidak terdistorsi */
             border-radius: 8px; /* Sudut membulat */
         }
+
+        /* Animasi untuk sertifikat */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .certificate-card {
+            animation: fadeIn 0.5s ease forwards; /* Tambahkan animasi fade-in */
+        }
+
+        /* Gaya untuk tombol kembali ke atas */
+        .back-to-top {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
     <header class="p-5 bg-gray-800 shadow-lg fixed w-full z-10 navbar" id="navbar">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold">Portofolio</h1>
-            <nav>
+            <div class="mobile-menu">
+                <button id="hamburger" class="text-white focus:outline-none md:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="desktop-menu hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="#home" class="hover:text-yellow-400">Home</a></li>
                     <li><a href="#about" class="hover:text-yellow-400">Tentang</a></li>
                     <li><a href="#projects" class="hover:text-yellow-400">Proyek</a></li>
+                    <li><a href="#certificates" class="hover:text-yellow-400">Sertifikat</a></li>
                     <li><a href="#contact" class="hover:text-yellow-400">Kontak</a></li>
                 </ul>
             </nav>
+        </div>
+        <div id="mobileMenu" class="mobile-menu hidden">
+            <ul class="flex flex-col items-center">
+                <li class="menu-item"><a href="#home" class="hover:text-yellow-400">Home</a></li>
+                <li class="menu-item"><a href="#about" class="hover:text-yellow-400">Tentang</a></li>
+                <li class="menu-item"><a href="#projects" class="hover:text-yellow-400">Proyek</a></li>
+                <li class="menu-item"><a href="#certificates" class="hover:text-yellow-400">Sertifikat</a></li>
+                <li class="menu-item"><a href="#contact" class="hover:text-yellow-400">Kontak</a></li>
+            </ul>
         </div>
     </header>
     
@@ -280,7 +320,7 @@
                 </h1>
                 <p class="text-xl mt-2">I'm mobile and web Developer</p>
                 <p class="mt-4">Transformasikan ide-ide Anda menjadi tampilan web yang menarik dengan sentuhan desain yang kreatif!</p>
-                <button class="mt-6 px-6 py-2 border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-gray-800 transition duration-300" onclick="window.open('sertifikat.pdf', '_blank')">Download CV</button>
+                <button class="mt-6 px-6 py-2 border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-gray-800 transition duration-300" onclick="window.open('cv.pdf', '_blank')">Download CV</button>
             </div>
             <div class="mt-8 md:mt-0 relative">
                 <div class="relative w-64 h-64">
@@ -414,15 +454,39 @@
             </div>
         </div>
     </section>
+
+    <section id="certificates" class="py-16 px-5 fade-in">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Sertifikat Saya</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="project-card p-5 rounded-lg shadow-lg certificate-card">
+                    <img src="laravel.jpg" alt="Sertifikat 1" class="project-image mb-4">
+                    <h3 class="text-xl font-semibold">Sertifikat pelatihan programing webb</h3>
+                    <p class="text-sm mt-2">Diberikan oleh ITB Stikom Ambon.</p>
+                </div>
+                <div class="project-card p-5 rounded-lg shadow-lg certificate-card">
+                    <img src="sertifikat2.jpg" alt="Sertifikat 2" class="project-image mb-4">
+                    <h3 class="text-xl font-semibold">Sertifikat Pemrograman PHP</h3>
+                    <p class="text-sm mt-2">Diberikan oleh ABC Institute.</p>
+                </div>
+                <div class="project-card p-5 rounded-lg shadow-lg certificate-card">
+                    <img src="iot.jpg" alt="Sertifikat 3" class="project-image mb-4">
+                    <h3 class="text-xl font-semibold">Battle Robot Stikom</h3>
+                    <p class="text-sm mt-2">Diberikan oleh ITB Stikom Ambon.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <section id="contact" class="py-16 px-5 fade-in">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold mb-4">Kontak Saya</h2>
-            <p class="text-lg">Silakan hubungi saya melalui email atau media sosial di bawah ini.</p>
+            <p class="text-lg">Silakan hubungi saya melalui media sosial di bawah ini.</p>
             <div class="mt-4 flex justify-center space-x-6">
                 <a href="https://www.tiktok.com/@ruuqfa" class="text-2xl hover:text-yellow-400"><i class="fab fa-tiktok"></i></a>
                 <a href="https://www.instagram.com/_alfaruq._/" class="text-2xl hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
                 <a href="https://github.com/RuQzyy" class="text-2xl hover:text-yellow-400"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/6281343039368" class="text-2xl hover:text-yellow-400"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </section>
@@ -439,7 +503,7 @@
     </div>
 
     <!-- Tombol Kembali ke Atas -->
-    <a href="#home" class="fixed bottom-5 right-5 bg-yellow-400 text-gray-900 p-3 rounded-full shadow-lg hover:bg-yellow-500">
+    <a href="#home" class="fixed bottom-5 right-5 bg-yellow-400 text-gray-900 p-3 rounded-full shadow-lg hover:bg-yellow-500 back-to-top">
         <i class="fas fa-arrow-up"></i>
     </a>
 
@@ -450,6 +514,13 @@
         const typingText = document.getElementById("typing-text");
         const profileImage = document.getElementById("profileImage");
         const aboutTextElements = document.querySelectorAll('.about-text');
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        // Toggle mobile menu
+        hamburger.addEventListener("click", function() {
+            mobileMenu.classList.toggle("hidden");
+        });
 
         function initializeCard() {
             idCard.style.top = "10%";
